@@ -6,7 +6,10 @@
     "ember-addon",
     "ember-cli-deploy-plugin"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunoocasali/ember-cli-deploy-minio.git"
+  },
   "license": "MIT",
   "author": {
     "name": "Bruno Casali",
