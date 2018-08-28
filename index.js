@@ -16,13 +16,15 @@ module.exports = {
       requiredConfig: ['accessKey', 'secretKey', 'bucket', 'endpoint'],
       runAfter: 'gzip',
       defaultConfig: {
-        source: 'tmp/deploy-dist/.',
+        distDir: function(context) {
+          return context.distDir;
+        },
         secure: true
       },
 
       upload: function(/*context*/) {
         var plugin = this,
-            source = this.readConfig('source');
+            source = this.readConfig('distDir');
 
         var promises = this.walk(path.join(source)).map(file => {
           var relative = path.relative(source, file),
