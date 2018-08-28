@@ -79,6 +79,12 @@ The minio bucket that the files will be uploaded to.
 
 *Default:* `undefined`
 
+### endpoint (`required`)
+
+The endpoint where minio server is exposed like: `https://play.minio:9200`.
+
+*Default:* `undefined`
+
 ### distDir
 
 The root directory where the files matching `filePattern` will be searched for. By default, this option will use the `distDir` property of the deployment context, provided by [ember-cli-deploy-build][2].
