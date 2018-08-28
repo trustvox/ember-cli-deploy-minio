@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-deploy-minio",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A ember-deploy addon to publish files to minio s3",
   "keywords": [
     "ember-addon",
