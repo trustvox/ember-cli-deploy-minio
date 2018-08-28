@@ -1,3 +1,4 @@
+/*eslint-env node*/
 'use strict';
 
 var BasePlugin = require('ember-cli-deploy-plugin');
@@ -13,6 +14,7 @@ module.exports = {
   createDeployPlugin: function(options) {
     var DeployPlugin = BasePlugin.extend({
       name: options.name,
+
       requiredConfig: ['accessKey', 'secretKey', 'bucket', 'endpoint'],
       runAfter: 'gzip',
       defaultConfig: {
@@ -31,6 +33,8 @@ module.exports = {
               bucket = plugin.readConfig('bucket'),
               meta = { 'Content-Type': mime.lookup(file) };
 
+          plugin.log(`preparing to upload to: "${bucket}"`, { verbose: true });
+
           return new RSVP.Promise(function(resolve, reject) {
             plugin.uploader().fPutObject(bucket, relative, file, meta, err => {
               if (err) {
@@ -39,12 +43,14 @@ module.exports = {
 
                 reject(err);
               } else {
-                plugin.log('✔ ' + relative);
+                plugin.log('✔ ' + relative, { verbose: true });
                 resolve(relative);
               }
             })
           });
         });
+
+        plugin.log(`uploaded ${promises.length} files ok`, { verbose: true });
 
         return RSVP.all(promises);
       },
@@ -63,9 +69,10 @@ module.exports = {
       uploader: function() {
         return new Minio.Client({
           accessKey: this.readConfig('accessKey'),
-          endPoint: this.readConfig('endpoint'),
           secretKey: this.readConfig('secretKey'),
-          useSSL: this.readConfig('secure')
+          endPoint: this.readConfig('endpoint'),
+          useSSL: this.readConfig('secure'),
+          port: this.readConfig('port')
         })
       }
     });
