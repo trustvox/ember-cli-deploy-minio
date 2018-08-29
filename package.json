@@ -22,7 +22,8 @@
   },
   "scripts": {
     "lint:js": "./node_modules/.bin/eslint index.js tests/**/*-test.js",
-    "test": "node ./node_modules/.bin/istanbul cover tests/runner.js --report lcovonly -- -R spec && codecov"
+    "test": "node ./node_modules/.bin/istanbul cover tests/runner.js --report lcovonly -- -R spec",
+    "coverage": "codecov"
   },
   "dependencies": {
     "ember-cli-babel": "^6.17.0",
