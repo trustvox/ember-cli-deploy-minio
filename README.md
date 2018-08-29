@@ -1,7 +1,9 @@
 # ember-cli-deploy-minio
 
+[![Build Status](https://travis-ci.org/trustvox/ember-cli-deploy-minio.svg?branch=master)](https://travis-ci.org/trustvox/ember-cli-deploy-minio)
 [![](https://ember-cli-deploy.github.io/ember-cli-deploy-version-badges/plugins/ember-cli-deploy-minio.svg)](http://ember-cli-deploy.github.io/ember-cli-deploy-version-badges/)
 ![npm](https://img.shields.io/npm/v/ember-cli-deploy-minio.svg)
+![dependencies](https://david-dm.org/trustvox/ember-cli-deploy-minio.svg)
 
 > An ember-cli-deploy plugin to upload files to minio (https://minio.io)
 
